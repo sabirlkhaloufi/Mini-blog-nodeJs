@@ -1,9 +1,16 @@
-const express = require('express')
+const express = require('express');
 const sequelize = require('./models/');
-const ArticleController = require('./controller/articleController.Js')
+
+
+
 const app = express()
+
 const Router = require('./routes/index.js')
 const Article = require('./routes/Article.js')
+const Category = require('./routes/Category.js')
+const Commentaire = require('./routes/Commentaire.js')
+const Avie = require('./routes/Avie.js')
+
 // parse requests of content-type - application/json
 app.use(express.json());
 
@@ -17,6 +24,11 @@ app.set('view engine', 'ejs');
 
 app.use('/',Router)
 app.use('/api/articles',Article)
+app.use('/api/category',Category)
+app.use('/api/commentaire',Commentaire)
+app.use('/api/avie',Avie)
+
+
 
 app.listen(port, () => {
   console.log(`server has started ${port}`)
