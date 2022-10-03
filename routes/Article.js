@@ -1,7 +1,6 @@
-module.exports = app => {
+
     const articles = require("../controller/articleController.js");
-  
-    var router = require("express").Router();
+      var router = require("express").Router();
   
     
     router.post("/", articles.create);
@@ -14,6 +13,8 @@ module.exports = app => {
 
     router.delete("/:id", articles.delete);
 
-    app.use('/api/articles', router);
-  };
+    
+
+    // app.use('/api/articles', router);
+    module.exports = router;
   

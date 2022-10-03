@@ -69,7 +69,7 @@ exports.create = (req, res) => {
       });
   };
   
-//   // Update a Tutorial by the id in the request
+
   exports.update = (req, res) => {
     const id = req.params.id;
   
@@ -79,22 +79,21 @@ exports.create = (req, res) => {
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Tutorial was updated successfully."
+            message: "article was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Tutorial with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+            message: `Cannot update article with id=${id}. Maybe article was not found or req.body is empty!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Tutorial with id=" + id
+          message: "Error updating article with id=" + id
         });
       });
   };
   
-//   // Delete a Tutorial with the specified id in the request
   exports.delete = (req, res) => {
     const id = req.params.id;
   
@@ -104,17 +103,17 @@ exports.create = (req, res) => {
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Tutorial was deleted successfully!"
+            message: "article was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+            message: `Cannot delete article with id=${id}. Maybe article was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Tutorial with id=" + id
+          message: "Could not delete article with id=" + id
         });
       });
   };
