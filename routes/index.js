@@ -1,4 +1,8 @@
-const article = require('../controller/articleController.js')
+// const article = require('./controller/articleController.Js');
+// const category = require('./controller/categorieController.Js');
+// const commentair= require('./controller/commentairController.js');
+// const avie = require('./controller/avieController.js');
+
 const express = require('express')
 const router = express.Router();
 

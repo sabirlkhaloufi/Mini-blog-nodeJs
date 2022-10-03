@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes} = require('sequelize');
+const Category = require('./categorieModel.js');
 const sequelize = require('./index.js');
 
 const Article = sequelize.define('Articles', {
@@ -14,16 +15,15 @@ const Article = sequelize.define('Articles', {
     centenu: {
         type: Sequelize.DataTypes.STRING
         // allowNull defaults to true
-    },
-    fk_categorie: {
-        type: Sequelize.DataTypes.INTEGER
-        // allowNull defaults to true
-    }
+    }  
   }, {
     // Other model options go here
   });
 
+  Category.hasMany(Article);
+  Article.belongsTo(Category);
 
+  Article.sync({ force: true })
 
 module.exports = Article;
 
