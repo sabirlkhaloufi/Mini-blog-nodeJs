@@ -1,6 +1,6 @@
 const commentair = require('../controller/avieController.js');
 
-var router = require("express").Router();
+const router = require("express").Router();
   
     
 router.post("/", commentair.create);
