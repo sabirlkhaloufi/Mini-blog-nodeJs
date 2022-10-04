@@ -1,6 +1,6 @@
 
     const category = require("../controller/categorieController.js");
-    var router = require("express").Router();
+    const router = require("express").Router();
 
   
   router.post("/", category.create);
