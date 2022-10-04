@@ -1,17 +1,17 @@
-const commentair = require('../controller/avieController.js');
+const Commentaire = require('../controller/commentairController');
 
 var router = require("express").Router();
   
     
-router.post("/", commentair.create);
+router.post("/", Commentaire.create);
 
-router.get("/", commentair.findAll);
+router.get("/", Commentaire.findAll);
 
-router.get("/:id", commentair.findOne);
+router.get("/:id", Commentaire.findOne);
 
-router.put("/:id", commentair.update);
+router.put("/:id", Commentaire.update);
 
-router.delete("/:id", commentair.delete);
+router.delete("/:id", Commentaire.delete);
 
 
 

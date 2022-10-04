@@ -5,7 +5,7 @@ const sequelize = require('./index.js');
 const Article = sequelize.define('Articles', {
     // Model attributes are defined here
     title: {
-      type:  Sequelize.Sequelize.DataTypes.STRING,
+      type: Sequelize.DataTypes.STRING,
       allowNull: false
     },
     description: {
