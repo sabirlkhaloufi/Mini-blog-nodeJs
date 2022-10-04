@@ -15,8 +15,16 @@ router.get('/dashboard', (req, res) => {
 })
 
 
+
+
 router.get('/articles', (req, res) => {
     res.render('dashboard/articles/articles.ejs')
   })
+
+
+  router.get('/Avis', (req, res) => {
+    res.render('dashboard/Avis/Avis.ejs')
+  })
+
 
 module.exports = router;
