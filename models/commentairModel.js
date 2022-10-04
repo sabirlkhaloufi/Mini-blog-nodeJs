@@ -2,6 +2,7 @@
 
 
 const { Sequelize, DataTypes} = require('sequelize');
+const Article = require('./articleModel');
 const sequelize = require('./index.js');
 
 const Commentaire = sequelize.define('Commentaires', {
@@ -12,12 +13,17 @@ const Commentaire = sequelize.define('Commentaires', {
         autoIncrement: true,
         primaryKey: true
     },
+
    
    
   });
   
   
 
+  Article.hasMany(Commentaire);
+  Commentaire.belongsTo(Article);
+
+  Commentaire.sync()
   // Commentaire.sync()
 
 module.exports = Commentaire;

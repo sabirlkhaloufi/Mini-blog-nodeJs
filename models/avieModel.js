@@ -1,6 +1,7 @@
 
 
 const { Sequelize, DataTypes} = require('sequelize');
+const Article = require('./articleModel.js');
 const sequelize = require('./index.js');
 
 const Avie = sequelize.define('Avies', {
@@ -11,12 +12,19 @@ const Avie = sequelize.define('Avies', {
         autoIncrement: true,
         primaryKey: true
     },
+    avie: {
+      type: DataTypes.STRING,
+      allowNull:false
+  },
    
    
   });
   
-  
 
-  // Category.sync()
+
+  Article.hasMany(Avie);
+  Avie.belongsTo(Article);
+
+  Avie.sync({ force:true})
 
 module.exports = Avie;

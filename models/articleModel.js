@@ -23,7 +23,7 @@ const Article = sequelize.define('Articles', {
   Category.hasMany(Article);
   Article.belongsTo(Category);
 
-  Article.sync({ force: true })
+  Article.sync()
 
 module.exports = Article;
 
