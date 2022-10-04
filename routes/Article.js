@@ -1,6 +1,6 @@
 
     const articles = require("../controller/articleController.js");
-      var router = require("express").Router();
+    const router = require("express").Router();
   
     
     router.post("/", articles.create);
