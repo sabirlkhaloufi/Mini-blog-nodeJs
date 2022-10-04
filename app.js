@@ -23,11 +23,11 @@ const port = 3000
 app.set('view engine', 'ejs');
 
 app.use('/',Router)
+
 app.use('/api/articles',Article)
 app.use('/api/category',Category)
 app.use('/api/commentaire',Commentaire)
 app.use('/api/avie',Avie)
-
 
 
 app.listen(port, () => {
