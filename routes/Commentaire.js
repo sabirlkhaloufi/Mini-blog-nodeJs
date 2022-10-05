@@ -1,6 +1,6 @@
-const commentair = require('../controller/avieController.js');
+const commentair = require('../controller/commentairController.js');
 
-var router = require("express").Router();
+const router = require("express").Router();
   
     
 router.post("/", commentair.create);

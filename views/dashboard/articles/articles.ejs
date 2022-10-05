@@ -1,4 +1,5 @@
 <%- include('../../partials/headadmin.ejs') %>
+
 <body>
     <div id="app">
         <div id="sidebar" class="active">
@@ -39,7 +40,7 @@
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
                                         <h4>les articles</h4>
-                                        <a href="" class="btn btn-primary">Ajouter Articles</a>
+                                        <a href="/addArticle" class="btn btn-primary">Ajouter Articles</a>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -48,52 +49,35 @@
                                                     <tr>
                                                         <th>title</th>
                                                         <th>description</th>
-                                                        <th>date created</th>
-                                                        <th>date update</th>
+                                                        <th>centenu</th>
                                                         <th></th>
+                
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    
+
+                                                    <% for(article of articles) { %>
                                                     <tr>
                                                         <td class="col-3">
-                                                            Si Ganteng
+                                                            <%= article.title %>
                                                         </td>
                                                         <td class="col-auto">
-                                                            Wow amazing design! Can you make another
-                                                            tutorial for
-                                                            this design?
+                                                            <%= article.description %>
                                                         </td>
 
                                                         <td class="col-auto">
-                                                            10/11/2020
+                                                            <%= article.centenu %>
                                                         </td>
-                                                        <td class="col-auto">
-                                                            10/11/2020
-                                                        </td>
+                                                        
                                                         <td>
-                                                            
+                                                            <a class="btn btn-info btn-sm" href='/updateArticle/<%= article.id %>'>update</a>
+                                                            <a class="btn btn-danger btn-sm" href='/deleteArticle/<%= article.id %>'>delete</a>
+                                                            <a class="btn btn-info btn-sm" href='/deleteArticle/<%= article.id %>'>view</a>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            Si Ganteng
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            Wow amazing design! Can you make another
-                                                            tutorial for
-                                                            this design?
-                                                        </td>
-
-                                                        <td class="col-auto">
-                                                            10/11/2020
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            10/11/2020
-                                                        </td>
-                                                        <td>
-                                                            
-                                                        </td>
-                                                    </tr>
+                                                    <% } %> 
+                                                   
                                                 </tbody>
                                             </table>
                                         </div>
