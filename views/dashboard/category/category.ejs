@@ -1,0 +1,123 @@
+<%- include('../../partials/headadmin.ejs') %>
+<body>
+    
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <%- include('../../partials/sidebar.ejs') %>
+
+
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <h3>Categories</h3>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Add  
+                    </button>
+            </div>
+            <div class="page-content">
+                <section class="row">
+                    <div class="col-12 col-lg-12">
+                        
+                        <div class="row">
+                            <div class="col-12 col-xl-12">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between">
+                                        
+                                        <h4>Categories</h4>
+
+                                        <!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">    Ajouter Category </h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="/addcategory" method="POST">
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control">
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </from>
+        </div>
+      </div>
+    </div>
+  </div>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-lg">
+                                                <thead>
+                                                    
+                                                    <tr>
+                                                        <th>title</th>
+                                                        <th>date created</th>
+                                                        <th>date update</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% categories.forEach(function(data) { %>
+                                                        <tr>
+                                                        <td class="col-3">
+                                                            <%= data.name %>
+                                                        </td>
+                                                       
+
+                                                        <td class="col-auto">
+                                                            <%= data.createdAt %>                                                          
+                                                        </td>
+                                                        <td class="col-auto">
+                                                            <%= data.updatedAt %>
+                                                        </td>
+                    
+                                                        <td>
+                                                            <button type="button" class="btn btn-info">UpDate</button>
+                                                            <button type="button" class="btn btn-danger">Delete</button>
+    
+                                                        </td>
+                                                    </tr>
+                                                   <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+<%- include('../../partials/footerAdmin.ejs') %>
+            

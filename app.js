@@ -1,5 +1,6 @@
 const express = require('express');
 const sequelize = require('./models/');
+const path = require ('path');
 
 
 
@@ -16,16 +17,18 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.static(__dirname + '/public'));
+
 const port = 3000
 
-app.set('view engine', 'ejs');
+app.set('view engine','ejs');
+app.set('views', './views');
+
 
 app.use('/',Router)
 
 app.use('/api/articles',Article)
-app.use('/api/category',Category)
+app.use('',Category)
 app.use('/api/commentaire',Commentaire)
 app.use('/api/avie',Avie)
 
