@@ -1,9 +1,6 @@
 const express = require('express');
 const sequelize = require('./models/');
 const path = require ('path');
-
-
-
 const app = express()
 
 const Router = require('./routes/index.js')
@@ -27,7 +24,7 @@ app.set('views', './views');
 
 app.use('/',Router)
 
-app.use('/api/articles',Article)
+app.use('/',Article)
 app.use('',Category)
 app.use('/api/commentaire',Commentaire)
 app.use('/api/avie',Avie)

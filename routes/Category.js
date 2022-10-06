@@ -1,5 +1,5 @@
 const category = require("../controller/categorieController.js");
-var router = require("express").Router();
+const router = require("express").Router();
 
 router.post("/addcategory", category.create);
 
@@ -9,11 +9,11 @@ router.get("/category", category.findAll);
 //   res.render("dashboard/category/category.ejs");
 // });
 
-// router.get("/:id", category.findOne);
+// router.get("/deleteCategory:id", category.findOne);
 
 // router.put("/:id", category.update);
 
-// router.delete("/:id", category.delete);
+router.get("/deleteCategory/:id", category.delete);
 
 // app.use('/api/articles', router);
 module.exports = router;

@@ -102,9 +102,8 @@
                                                         </td>
                     
                                                         <td>
-                                                            <button type="button" class="btn btn-info">UpDate</button>
-                                                            <button type="button" class="btn btn-danger">Delete</button>
-    
+                                                            <a class="btn btn-info btn-sm" href='/updateCategory/<%= data.id %>'>update</a>
+                                                            <a class="btn btn-danger btn-sm" href='/deleteCategory/<%= data.id %>'>delete</a>
                                                         </td>
                                                     </tr>
                                                    <% }); %>

@@ -24,7 +24,6 @@ exports.findAll = async (req, res) => {
   res.render("dashboard/category/category", {
     categories: alldata,
   });
-
 };
 
 // // Find a single Tutorial with an id
@@ -72,26 +71,23 @@ exports.findAll = async (req, res) => {
 //     });
 // };
 
-// exports.delete = (req, res) => {
-//   const id = req.params.id;
-
-//   Category.destroy({
-//     where: { id: id },
-//   })
-//     .then((num) => {
-//       if (num == 1) {
-//         res.send({
-//           message: "article was deleted successfully!",
-//         });
-//       } else {
-//         res.send({
-//           message: `Cannot delete article with id=${id}. Maybe article was not found!`,
-//         });
-//       }
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message: "Could not delete article with id=" + id,
-//       });
-//     });
-// };
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  Category.destroy({
+    where: { id: id },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.redirect("/category");
+      } else {
+        res.send({
+          message: `Cannot delete article with id=${id}. Maybe article was not found!`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Could not delete article with id=" + id,
+      });
+    });
+};
