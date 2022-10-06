@@ -15,15 +15,20 @@ const Article = sequelize.define('Articles', {
     centenu: {
         type: Sequelize.DataTypes.STRING
         // allowNull defaults to true
-    }  
+    },
+  //   image: {
+  //     type: Sequelize.DataTypes.STRING
+  //     // allowNull defaults to true
+  // }
+    
   }, {
-    // Other model options go here
+    
   });
 
   Category.hasMany(Article);
   Article.belongsTo(Category);
 
-  // Article.sync()
+  Article.sync()
 
 module.exports = Article;
 

@@ -10,9 +10,9 @@
   
     router.get("/getArticle/:id", articles.findOne);
   
-    router.put("/updateArticle/:id", articles.update);
+    router.post("/updateArticle/:id", articles.update);
 
-    router.delete("/deleteArticle/:id", articles.delete);
+    router.get("/deleteArticle/:id", articles.delete);
 
 
     router.get('/articles', async (req, res) => {

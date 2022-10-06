@@ -5,7 +5,8 @@
 
 const articles = require("../controller/articleController.js");
 
-const express = require('express')
+const express = require('express');
+const { response } = require("../app.js");
 const router = express.Router();
 
 // router.get('/', (req, res) => {
@@ -14,9 +15,21 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const data = await articles.getAllArticles(req, res)
-     res.render('home',
+     res.render('home.ejs',
        {
-        articles: data
+        articles: data,
+        categories:
+        [
+          {
+            cat:"sllsmkql"
+          },
+          {
+            cat:"sllsmkql"
+          },
+          {
+            cat:"sllsmkql"
+          },
+        ]
       });
   })
 

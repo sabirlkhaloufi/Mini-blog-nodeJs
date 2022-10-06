@@ -23,7 +23,7 @@ const Commentaire = sequelize.define('Commentaires', {
   Article.hasMany(Commentaire);
   Commentaire.belongsTo(Article);
 
-  // Commentaire.sync()
+  Commentaire.sync()
   // Commentaire.sync()
 
 module.exports = Commentaire;
