@@ -25,10 +25,6 @@ const Avie = sequelize.define('Avies', {
   Article.hasMany(Avie);
   Avie.belongsTo(Article);
 
-<<<<<<< HEAD
   // Avie.sync({ force:true})
-=======
-  // Avie.sync()
->>>>>>> 89189279c6abcf527c0b506c36ed44f875a37379
 
 module.exports = Avie;
