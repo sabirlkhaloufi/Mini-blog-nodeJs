@@ -1,6 +1,14 @@
 .card-article{
     width: 48% !important; 
 }
+
+.bg-home-page{
+background-image: url("../images/home-bg.jpg");
+height: 80vh;
+}
+.table-responsive .btn{
+  width: 70px;
+}
 /* ---------------- */
 /*        main      */
 /* ---------------- */
