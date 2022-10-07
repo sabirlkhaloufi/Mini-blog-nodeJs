@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 
 app.use('/',Router)
 app.use('/',Article)
-app.use('/api/category',Category)
+app.use('',Category)
 app.use('/api/commentaire',Commentaire)
 app.use('/api/avie',Avie)
 
