@@ -26,7 +26,7 @@ app.use('/',Router)
 app.use('/',Article)
 app.use('/api/category',Category)
 app.use('/api/commentaire',Commentaire)
-app.use('/api/avie',Avie)
+app.use('/',Avie)
 
 
 app.listen(port, () => {

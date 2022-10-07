@@ -47,6 +47,9 @@
 
 router.get('/updateArticle', (req, res) => {
     res.render('dashboard/articles/updateArticle.ejs')
+
+
+    
 })
 
     // app.use('/api/articles', router);

@@ -1,19 +1,44 @@
 const avie = require('../controller/avieController.js');
-
+const Avie = require("../models/avieModel")
 const router = require("express").Router();
   
     
-router.post("/", avie.create);
+router.post("/addAvie", avie.create);
 
-router.get("/", avie.findAll);
+router.get("/getAllAvie", avie.getAllAvie);
 
-router.get("/:id", avie.findOne);
+router.get("/getAvie/:id", avie.findOne);
 
-router.put("/:id", avie.update);
+router.put("/updateAvie/:id", avie.update);
 
-router.delete("/:id", avie.delete);
+router.delete("/deleteAvie/:id", avie.delete);
 
 
 
-// app.use('/api/articles', router);
+router.get('/Avis', async (req, res) => {
+    res.render('dashboard/Avis/Avis.ejs',
+    
+    {
+       avis:[
+           {
+               avie:"ksksk"
+           },
+           {
+               avie:"ksksk"
+           },
+           {
+               avie:"ksksk"
+           }
+       ]
+    }
+     )
+ })
+
+ 
+ router.get('/addAvie', (req, res) => {
+    res.render('dashboard/Avis/addAvies.ejs')
+})
+
+
+
 module.exports = router;
