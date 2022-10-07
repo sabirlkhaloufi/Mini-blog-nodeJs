@@ -20,7 +20,7 @@ app.set('views', './views');
 
 app.use('/',Router)
 
-app.use('/api/articles',Article)
+app.use('/',Article)
 app.use('',Category)
 app.use('/api/commentaire',Commentaire)
 app.use('/api/avie',Avie)

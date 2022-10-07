@@ -1,3 +1,4 @@
+// const { response } = require("../app.js");
 const Category = require("../models/categorieModel");
 
 // Create and Save a new Tutorial
@@ -23,74 +24,61 @@ exports.findAll = async (req, res) => {
   res.render("dashboard/category/category", {
     categories: alldata,
   });
-
 };
 
-// // Find a single Tutorial with an id
-// exports.findOne = (req, res) => {
-//   const id = req.params.id;
+// Find a single Tutorial with an id
+exports.findOne = (req, res) => {
+    const id = req.params.id;
 
-//   Category.findByPk(id)
-//     .then((data) => {
-//       if (data) {
-//         res.send(data);
-//       } else {
-//         res.status(404).send({
-//           message: `Cannot find article with id=${id}.`,
-//         });
-//       }
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message: "Error retrieving article with id=" + id,
-//       });
-//     });
-// };
+  Category.findByPk(id)
+    .then((data) => {
+      if (data) {
+        res.render("dashboard/category/updateCategory",{'data' :data});
+        // res.send(data);
+      } else {
+        res.status(404).send({
+          message: `Cannot find article with id=${id}.`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving article with id=" + id,
+      });
+    });
+};
 
-// exports.update = (req, res) => {
-//   const id = req.params.id;
+exports.update = (req, res) => {
+  console.log("yesss")
 
-//   Category.update(req.body, {
-//     where: { id: id },
-//   })
-//     .then((num) => {
-//       if (num == 1) {
-//         res.send({
-//           message: "article was updated successfully.",
-//         });
-//       } else {
-//         res.send({
-//           message: `Cannot update article with id=${id}. Maybe article was not found or req.body is empty!`,
-//         });
-//       }
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message: "Error updating article with id=" + id,
-//       });
-//     });
-// };
+  const id = req.params.id;
 
-// exports.delete = (req, res) => {
-//   const id = req.params.id;
+  Category.update(req.body, {
+    where: { id: id },
+  })
+    
+        res.redirect("/category");
+     
+    
+};
 
-//   Category.destroy({
-//     where: { id: id },
-//   })
-//     .then((num) => {
-//       if (num == 1) {
-//         res.send({
-//           message: "article was deleted successfully!",
-//         });
-//       } else {
-//         res.send({
-//           message: `Cannot delete article with id=${id}. Maybe article was not found!`,
-//         });
-//       }
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message: "Could not delete article with id=" + id,
-//       });
-//     });
-// };
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  Category.destroy({
+    where: { id: id },
+  })
+    .then((num) => {
+      if (num == 1) {
+        res.redirect("/category");
+      } else {
+        res.send({
+          message: `Cannot delete article with id=${id}. Maybe article was not found!`,
+        });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Could not delete article with id=" + id,
+      });
+    });
+};
