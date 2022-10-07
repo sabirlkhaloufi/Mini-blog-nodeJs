@@ -41,7 +41,7 @@
                                         <h4>modifier Articles</h4>
                                     </div>
                                     <div class="card-body">
-                                        <form action="/updateArticle/<%= article.id%>" method="POST" enctype="multipart/form-data">
+                                        <form action="/updateArticle/<%= article.id%>" method="POST">
                                             <div class="mb-3">
                                               <label for="exampleInputEmail1" class="form-label">title</label>
                                               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%= article.title%>" name="title">
@@ -54,7 +54,7 @@
 
                                             <div class="mb-3">
                                                 <label for="categories" class="form-label">categorie</label>
-                                                <select name="" id="categories" class="form-control" value="<%= article.categoriId%>" name="categoriId">
+                                                <select name="" id="categories" class="form-control" value="<%= article.categoriId%>" name="CategoryId">
                                                     <option value="">cat1</option>
                                                     <option value="">cat2</option>
                                                 </select>

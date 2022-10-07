@@ -12,5 +12,5 @@ const sequelize = new Sequelize(db.dbName,db.username,db.password, {
   // } catch (error) {
   //   console.error('Unable to connect to the database:', error);
   // }
-
+  
   module.exports = sequelize;
