@@ -1,4 +1,3 @@
-const { response } = require("../app.js");
 const Category = require("../models/categorieModel");
 
 // Create and Save a new Tutorial

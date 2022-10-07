@@ -1,4 +1,3 @@
-const { response } = require("../app.js");
 const Article = require("../models/articleModel.js");
 
   // Create and Save a new articles
@@ -14,12 +13,14 @@ exports.create =  (req, res) => {
     const article = {
       title: req.body.title,
       description: req.body.description,
-      centenu: req.body.centenu
+      centenu: req.body.centenu,
+      CategoryId: req.body.CategoryId
     };
   
     Article.create(article)
       .then(data => {
         res.redirect('/articles');
+        console.log(data)
       })
       .catch(err => {
         res.status(500).send({
@@ -28,7 +29,6 @@ exports.create =  (req, res) => {
         });
       });
   };
-  
 
   exports.getAllArticles = async (req, res) => {
     const allData = await Article.findAll({}).then(data => {
@@ -44,7 +44,6 @@ exports.create =  (req, res) => {
 
       return allData
   };
-
 
   exports.findOne =  async (req, res) => {
     const id = req.params.id;
@@ -90,13 +89,13 @@ exports.create =  (req, res) => {
     })
       .then(num => {
         if (num == 1) {
-          res.send({
-            message: "article was updated successfully."
-          });
+          res.redirect("/articles")
         } else {
           res.send({
             message: `Cannot update article with id=${id}. Maybe article was not found or req.body is empty!`
+            
           });
+          console.log(req.body)
         }
       })
       .catch(err => {
@@ -105,7 +104,7 @@ exports.create =  (req, res) => {
         });
       });
   };
-  
+
   exports.delete = (req, res) => {
     const id = req.params.id;
   
