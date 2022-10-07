@@ -6,6 +6,8 @@ router.post("/addcategory", category.create);
 router.get("/category", category.findAll);
 router.get("/updateCategory/:id", category.findOne);
 router.post("/updateAddCategory/:id", category.update);
+router.get("/deleteCategory/:id", category.delete);
+
 
 
 
