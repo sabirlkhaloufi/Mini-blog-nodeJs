@@ -129,4 +129,10 @@ exports.create =  (req, res) => {
         });
       });
   };
+
+
+  exports.countArticle = async (req, res) => {
+    const data = await Article.findAndCountAll();
+    return data;
+  }
   

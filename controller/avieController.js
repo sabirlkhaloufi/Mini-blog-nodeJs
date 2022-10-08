@@ -10,6 +10,7 @@ exports.create = (req, res) => {
         message: "Content can not be empty!"
       });
       return;
+      
     }
     
     // Create a Tutorial

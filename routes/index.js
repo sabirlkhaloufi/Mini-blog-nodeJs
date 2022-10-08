@@ -43,8 +43,13 @@ router.get('/', async (req, res) => {
       console.log(data)
   })
 
-router.get('/dashboard', (req, res) => {
-    res.render('dashboard/index.ejs')
+router.get('/dashboard', async (req, res) => {
+  const countArticles = await articles.countArticle(req, res);
+    res.render('dashboard/index.ejs',{
+      nbrArticles:countArticles,
+    })
+
+    console.log(countArticles);
 })
 
 module.exports = router;

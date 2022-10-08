@@ -14,6 +14,7 @@
 
     router.get("/deleteArticle/:id", articles.delete);
 
+    router.get("/count", articles.countArticle);
 
     router.get('/articles', async (req, res) => {
       const test = await articles.getAllArticles(req, res)
