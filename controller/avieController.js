@@ -1,5 +1,4 @@
 
-// const { response } = require("../app.js");
 const Avie = require("../models/avieModel");
 
   // Create and Save a new Tutorial
@@ -10,6 +9,7 @@ exports.create = (req, res) => {
         message: "Content can not be empty!"
       });
       return;
+      
     }
     
     // Create a Tutorial

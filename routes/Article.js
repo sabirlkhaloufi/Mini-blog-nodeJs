@@ -16,6 +16,7 @@ router.post("/updateArticle/:id", articles.update);
 
 router.get("/deleteArticle/:id", articles.delete);
 
+    router.get("/count", articles.countArticle);
 
 router.get('/articles', async (req, res) => {
   const test = await articles.getAllArticles(req, res)
@@ -28,20 +29,17 @@ router.get('/articles', async (req, res) => {
 
 router.get('/updateArticle/:id', async (req, res) => {
   const data = await articles.findOne(req, res)
-  // console.log(data)
+  const categories = await category.findAllCatToArt(req,res)
    res.render('dashboard/articles/updateArticle.ejs',
      {
-      article: data
+      article: data,
+      category:categories
+
     });
   
 })
 
 
-// async function getData() {
-//   const data = await articles.getAllArticles;
-//   // const articlesData = await data.json();
-//   return data;
-// 
 
 router.get('/addArticle', async (req, res) => {
 const data = await category.findAllCatToArt(req,res)
@@ -50,9 +48,9 @@ res.render('dashboard/articles/createArticle.ejs',{
 })
 
 
-router.get('/updateArticle', (req, res) => {
-res.render('dashboard/articles/updateArticle.ejs')
-})
+// router.get('/updateArticle', async(req, res) => {
+// const data = await category.findAllCatToArt(req,res)
+// res.render('dashboard/articles/updateArticle.ejs')
+// })
 
-// app.use('/api/articles', router);
 module.exports = router;
