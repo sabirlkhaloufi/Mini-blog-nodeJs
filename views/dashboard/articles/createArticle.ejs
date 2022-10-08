@@ -55,8 +55,9 @@
                                             <div class="mb-3">
                                                 <label for="categories" class="form-label">categorie</label>
                                                 <select name="" id="categories" class="form-control" name="categoriId">
-                                                    <option value="">cat1</option>
-                                                    <option value="">cat2</option>
+                                                    <% category.forEach(function(data) { %>
+                                                    <option value=""><%= data.name%></option>
+                                                    <%})%>
                                                 </select>
                                               </div>
 

@@ -1,7 +1,9 @@
   // const fetch = require('node-fetch')
   const articles = require("../controller/articleController.js");
+  const category = require("../controller/categorieController.js");
   const router = require("express").Router();
   const Article = require("../models/articleModel.js");
+const Category = require("../models/categorieModel.js");
 
 
 router.post("/addArticle", articles.create);
@@ -26,7 +28,7 @@ router.get('/articles', async (req, res) => {
 
 router.get('/updateArticle/:id', async (req, res) => {
   const data = await articles.findOne(req, res)
-  console.log(data)
+  // console.log(data)
    res.render('dashboard/articles/updateArticle.ejs',
      {
       article: data
@@ -41,9 +43,12 @@ router.get('/updateArticle/:id', async (req, res) => {
 //   return data;
 // 
 
-router.get('/addArticle', (req, res) => {
-res.render('dashboard/articles/createArticle.ejs')
+router.get('/addArticle', async (req, res) => {
+const data = await category.findAllCatToArt(req,res)
+res.render('dashboard/articles/createArticle.ejs',{
+  category:data });
 })
+
 
 router.get('/updateArticle', (req, res) => {
 res.render('dashboard/articles/updateArticle.ejs')
