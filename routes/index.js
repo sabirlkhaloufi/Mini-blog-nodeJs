@@ -1,7 +1,3 @@
-// const article = require('./controller/articleController.Js');
-// const category = require('./controller/categorieController.Js');
-// const commentair= require('./controller/commentairController.js');
-// const avie = require('./controller/avieController.js');
 
 const articles = require("../controller/articleController.js");
 

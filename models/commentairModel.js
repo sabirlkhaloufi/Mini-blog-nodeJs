@@ -14,6 +14,7 @@ const Commentaire = sequelize.define('Commentaires', {
         primaryKey: true
     },
 
+
    
    
   });
