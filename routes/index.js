@@ -1,5 +1,7 @@
 
 const articles = require("../controller/articleController.js");
+const category = require("../controller/categorieController");
+
 
 const express = require('express');
 const { response } = require("../app.js");
@@ -11,21 +13,13 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const data = await articles.getAllArticles(req, res)
+    const dataCat = await category.findAllCatToArt(req,res)
+
      res.render('home.ejs',
        {
         articles: data,
-        categories:
-        [
-          {
-            cat:"sllsmkql"
-          },
-          {
-            cat:"sllsmkql"
-          },
-          {
-            cat:"sllsmkql"
-          },
-        ]
+        categories:dataCat
+        
       });
   })
 
