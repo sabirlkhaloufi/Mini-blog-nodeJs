@@ -1,120 +1,62 @@
+const Model = require("../models/commentairModel.js")
 
-// const { response } = require("../app.js");
-const Commentaire = require("../models/commentairModel");
 
-  // Create and Save a new Tutorial
-exports.create = (req, res) => {
-    // Validate request
-    if (!req.body.name) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
+// ! affichage
+const afficher=(req,res)=>{
+      Model.findAll()
+      .then(comment =>{res.render('commenter',{ comment : comment })})
     
-    // Create a Tutorial
-    const Commentaire = {
-      title: req.body.name,
-      
-    };
-  
-    // Save Tutorial in the database
-    Commentaire.create(Commentaire)
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the article."
-        });
-      });
-  };
-  
-//   // Retrieve all Tutorials from the database.
-  exports.findAll = (req, res) => {
-    // const title = req.query.title;
-    // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
-  
-    Commentaire.findAll({})
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving articles."
-        });
-      });
-  };
-  
- // Find a single Tutorial with an id
-  exports.findOne = (req, res) => {
-    const id = req.params.id;
-  
-    Commentaire.findByPk(id)
-      .then(data => {
-        if (data) {
-          res.send(data);
-        } else {
-          res.status(404).send({
-            message: `Cannot find article with id=${id}.`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error retrieving article with id=" + id
-        });
-      });
-  };
-  
+      .catch((error) =>
+      {console.log(error);})
+}
 
-  exports.update = (req, res) => {
-    const id = req.params.id;
-  
-    Commentaire.update(req.body, {
-      where: { id: id }
-    })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "article was updated successfully."
-          });
-        } else {
-          res.send({
-            message: `Cannot update article with id=${id}. Maybe article was not found or req.body is empty!`
-          });
-        }
+// ! ajouter
+const ajouter=(req,res)=>{
+      const {body} = req;
+      Model.create({...body})
+      .then(
+      res.redirect('/afficher')
+  )
+  .catch()
+}
+
+// ! modifier 
+
+const edit=(req,res)=>{
+      const {id} = req.body
+      Model.findByPk(id)
+      .then(m=>{
+        res.render('modifier' , { m :m })
       })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error updating article with id=" + id
-        });
-      });
-  };
-  
-  exports.delete = (req, res) => {
-    const id = req.params.id;
-  
-    Commentaire.destroy({
-      where: { id: id }
-    })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "article was deleted successfully!"
-          });
-        } else {
-          res.send({
-            message: `Cannot delete article with id=${id}. Maybe article was not found!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Could not delete article with id=" + id
-        });
-      });
-  };
-  
+  .catch()
+}
+const modifier=(req,res)=>{
+      const {body} =req // return just id *
+      const id = body.id
+      Model.findByPk(id) // return obj contain name and id 
+      .then(obj=>{
+
+      obj.Name = body.Name
+      obj.comment = body.comment
+
+      obj.save()
+      .then( res.redirect('/afficher'))
+      .catch()
+
+  })
+  .catch()
+
+}
+
+// ! supprimer
+
+const supprimer=(req,res)=>{
+      const {id} = req.body
+      Model.destroy({where : { id : id}})
+      .then(res.redirect('/afficher'))
+      .catch()
+}
+
+
+
+module.exports= {afficher,ajouter,modifier,supprimer,edit}
