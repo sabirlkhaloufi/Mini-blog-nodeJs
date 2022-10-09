@@ -108,3 +108,10 @@ exports.articleByCategory = async (req, res)=>{
    });
 
 }
+
+
+//get number of allArticles
+exports.countCategory = async (req, res) => {
+  const data = await Category.findAndCountAll();
+  return data;
+}

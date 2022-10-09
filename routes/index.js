@@ -32,14 +32,17 @@ router.get('/', async (req, res) => {
       });
       console.log(data)
   })
-
+  
 router.get('/dashboard', async (req, res) => {
   const countArticles = await articles.countArticle(req, res);
+  const countCategorys = await category.countCategory(req, res);
+
     res.render('dashboard/index.ejs',{
       nbrArticles:countArticles,
+      nbrCategorys:countCategorys,
+
     })
 
-    console.log(countArticles);
 })
 
 module.exports = router;
