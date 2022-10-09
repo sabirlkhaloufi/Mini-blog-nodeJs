@@ -1,34 +1,15 @@
 
-// const { response } = require("../app.js");
 const Avie = require("../models/avieModel.js");
 
   // Create and Save a new Tutorial
 exports.create = (req, res) => {
-    // Validate request
-    // console.log(req.body.Avie);
-    if (!req.body.Avie) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
-    
     // Create a Tutorial
     const avie = {
       avie: req.body.Avie,
     };
-  
     // Save Tutorial in the database
-    Avie.create(avie)
-      .then(data => {
-        res.redirect('/Avis');
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the avie."
-        });
-      });
+    Avie.create(avie);
+    res.redirect("/Avis")
   };
   
 //   // Retrieve all Tutorials from the database.
@@ -38,12 +19,7 @@ exports.create = (req, res) => {
       return data
         // return JSON.parse(JSON.stringify(data))
       })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving avis."
-        });
-      });
+    
       return allData
   };
   
@@ -52,15 +28,7 @@ exports.create = (req, res) => {
     const id = req.params.id;
     const allData = await Avie.findByPk(id).then(data => {
       return data
-    
       })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving avis."
-        });
-      });
-
       return allData
     };  
 
@@ -70,22 +38,8 @@ exports.create = (req, res) => {
     Avie.update(req.body, {
       where: { id: id }
     })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "avie was updated successfully."
-          });
-        } else {
-          res.send({
-            message: `Cannot update avie with id=${id}. Maybe avie was not found or req.body is empty!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error updating Avie with id=" + id
-        });
-      });
+  
+    res.redirect("/Avis")
   };
   
   exports.delete = (req, res) => {
@@ -94,20 +48,7 @@ exports.create = (req, res) => {
     Avie.destroy({
       where: { id: id }
     })
-      .then(num => {
-        if (num == 1) {
-     
+          
           res.redirect("/Avis")
-        } else {
-          res.send({
-            message: `Cannot delete avie with id=${id}. Maybe avie was not found!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Could not delete avie with id=" + id
-        });
-      });
-  };
-  
+  }
+     

@@ -17,7 +17,6 @@
                 
                 <%- include('../../partials/sidebar.ejs') %>
 
-
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
         </div>
@@ -47,28 +46,28 @@
                                             <table class="table table-hover table-lg">
                                                 <thead>
                                                     <tr>
+
                                                         <th>Avie</th>
                                                         <th></th>
-                
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     
-
-                                                    <% for(avie of avis) { %>
+                                                    <% for(allavie of avie) { %>
                                                     <tr>
                                                         <td class="col-3">
-                                                            <%= avie.avie %>
+                                                            <%= allavie.avie %>
                                                         </td>
-                                                        
+                            
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href='/updateAvie/<%= avie.id %>'>update</a>
-                                                            <a class="btn btn-danger btn-sm" href='/deleteAvie/<%= avie.id %>'>delete</a>
+                                                            <a href="/getAvi/<%= allavie.id %>" class="btn btn-info btn-sm">update</a>
+                                                            <a class="btn btn-danger btn-sm" href='/delete/<%= allavie.id %>'>delete</a>
                                                             <a class="btn btn-info btn-sm" href='/viewAvie/<%= avie.id %>'>view</a>
                                                         </td>
                                                     </tr>
                                                     <% } %> 
-                                                   
+                                    
                                                 </tbody>
                                             </table>
                                         </div>
