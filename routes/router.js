@@ -10,7 +10,7 @@ router.get('/ajouter',(req,res)=>{
 // ! action de l'insertion 
 router.post('/ajouter',ajouter)
 // ! action de l'insertion 
-router.post('/ajouter',ajouter)
+router.post('/article/ajouter',ajouter)
 // ! pour afficher la fome rempli avec les donnes 
 router.post('/edit',edit);
 // ! action de la modification 
