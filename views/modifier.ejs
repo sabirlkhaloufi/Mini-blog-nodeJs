@@ -1,0 +1,70 @@
+<%- include('partials/headadmin.ejs') %>
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <%- include('partials/sidebar.ejs') %>
+
+
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <h3>les Commenter</h3>
+            </div>
+            <div class="page-content">
+                <section class="row">
+                    <div class="col-12 col-lg-12">
+                        
+                        <div class="row">
+                            <div class="col-12 col-xl-12">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <h4>Update her</h4>:
+                                    </div>
+                                    <div class="card-body">
+                                        <form action="/modifier" method="post">
+                                            <div class="mb-3">
+
+                                              <input type="hidden" value="<%= m.id  %> " class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id">
+                                            </div>
+
+                                            <div class="mb-3">
+                                              <label for="exampleInputPassword1" class="form-label">Name</label>
+                                              <input type="text" value="<%= m.Name  %> " class="form-control" id="exampleInputPassword1" name="Name">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="exampleInputPassword1" class="form-label">Commentair</label>
+                                                <input type="text" value="<%= m.comment  %> " class="form-control" id="exampleInputPassword1" name="comment">
+                                              </div>
+  
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                          </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+<%- include('partials/footerAdmin.ejs') %>
+            
