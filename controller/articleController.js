@@ -1,133 +1,49 @@
-// const { response } = require("../app.js");
+
 const Article = require("../models/articleModel.js");
 
   // Create and Save a new articles
-exports.create =  (req, res) => {
-    // Validate request
-    if (!req.body.title) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
-    
-    const article = {
-      title: req.body.title,
-      description: req.body.description,
-      centenu: req.body.centenu,
-      CategoryId: req.body.CategoryId
-    };
-  
-    Article.create(article)
-      .then(data => {
-        res.redirect('/articles');
-        console.log(data)
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the article."
-        });
-      });
-  };
+exports.create =  (req, res) => {  
+    Article.create(req.body)
+    res.redirect('/articles');
+}
 
+//get All articles
   exports.getAllArticles = async (req, res) => {
-    const allData = await Article.findAll({}).then(data => {
-      return data
-        // return JSON.parse(JSON.stringify(data))
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving articles."
-        });
-      });
-
-      return allData
+    const allData = await Article.findAll();
+    return allData
   };
 
+
+//get one article
   exports.findOne =  async (req, res) => {
     const id = req.params.id;
-    const allData = await Article.findByPk(id).then(data => {
-      return data
-      // res.send(data)
-        // return JSON.parse(JSON.stringify(data))
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving articles."
-        });
-      });
-
+    const allData = await Article.findByPk(id);
       return allData
+  }
 
 
-    // const id = req.params.id;
-    // const getArticle = await Article.findByPk(id)
-    //   .then(data => {
-    //     if (data) {
-    //       return data;
-    //     } else {
-    //       res.status(404).send({
-    //         message: `Cannot find article with id=${id}.`
-    //       });
-    //     }
-    //   })
-    //   .catch(err => {
-    //     res.status(500).send({
-    //       message: "Error retrieving article with id=" + id
-    //     });
-    //   });
-    //   return getArticle;
-  };
-
+  //update article 
   exports.update = (req, res) => {
     const id = req.params.id;
-  
     Article.update(req.body, {
       where: { id: id }
     })
-      .then(num => {
-        if (num == 1) {
-          res.redirect("/articles")
-        } else {
-          res.send({
-            message: `Cannot update article with id=${id}. Maybe article was not found or req.body is empty!`
-            
-          });
-          console.log(req.body)
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error updating article with id=" + id
-        });
-      });
+    res.redirect("/articles")
   };
 
+  //delete article
   exports.delete = (req, res) => {
     const id = req.params.id;
-  
     Article.destroy({
       where: { id: id }
     })
-      .then(num => {
-        if (num == 1) {
-          // res.send({
-          //   message: "article was deleted successfully!"
-          // });
-          res.redirect("/articles")
-        } else {
-          res.send({
-            message: `Cannot delete article with id=${id}. Maybe article was not found!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Could not delete article with id=" + id
-        });
-      });
+    res.redirect("/articles")
   };
+
+
+  //get number of allArticles
+  exports.countArticle = async (req, res) => {
+    const data = await Article.findAndCountAll();
+    return data;
+  }
   

@@ -1,4 +1,3 @@
-// const { response } = require("../app.js");
 const Category = require("../models/categorieModel");
 
 // Create and Save a new Tutorial
@@ -82,3 +81,12 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+
+///show categorys for articles
+exports.findAllCatToArt = async (req, res) => {
+  const alldatacat = await Category.findAll({ raw: true, nest: true });
+ return alldatacat;
+};
+
+

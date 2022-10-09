@@ -1,5 +1,9 @@
 const Model = require("../models/commentairModel.js")
 
+<<<<<<< HEAD
+=======
+const Commentaire = require("../models/commentairModel");
+>>>>>>> da940a1c2ef0c1f388185753621b53a09c2eca8d
 
 // ! affichage
 const afficher=(req,res)=>{
