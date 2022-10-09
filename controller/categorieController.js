@@ -1,4 +1,6 @@
 const Category = require("../models/categorieModel");
+const Article = require("../models/articleModel.js");
+
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
@@ -48,7 +50,6 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  console.log("yesss")
 
   const id = req.params.id;
 
@@ -89,4 +90,28 @@ exports.findAllCatToArt = async (req, res) => {
  return alldatacat;
 };
 
+//get Article By Categorys
 
+exports.articleByCategory = async (req, res)=>{
+
+  const alldatacat = await Category.findAll({ raw: true, nest: true });
+  const id = req.params.id;
+
+    const data = await Article.findAll( {
+    where: { CategoryId: id },    raw: true, nest: true
+    
+  })
+   res.render('home',{
+    articles: data,
+    categories:alldatacat
+
+   });
+
+}
+
+
+//get number of allArticles
+exports.countCategory = async (req, res) => {
+  const data = await Category.findAndCountAll();
+  return data;
+}
