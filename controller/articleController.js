@@ -1,4 +1,3 @@
-
 const Article = require("../models/articleModel.js");
 
   // Create and Save a new articles

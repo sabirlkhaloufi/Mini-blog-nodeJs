@@ -1,5 +1,7 @@
 
 const articles = require("../controller/articleController.js");
+const category = require("../controller/categorieController");
+
 
 const express = require('express');
 const { response } = require("../app.js");
@@ -11,21 +13,13 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const data = await articles.getAllArticles(req, res)
+    const dataCat = await category.findAllCatToArt(req,res)
+
      res.render('home.ejs',
        {
         articles: data,
-        categories:
-        [
-          {
-            cat:"sllsmkql"
-          },
-          {
-            cat:"sllsmkql"
-          },
-          {
-            cat:"sllsmkql"
-          },
-        ]
+        categories:dataCat
+        
       });
   })
 
@@ -38,14 +32,17 @@ router.get('/', async (req, res) => {
       });
       console.log(data)
   })
-
+  
 router.get('/dashboard', async (req, res) => {
   const countArticles = await articles.countArticle(req, res);
+  const countCategorys = await category.countCategory(req, res);
+
     res.render('dashboard/index.ejs',{
       nbrArticles:countArticles,
+      nbrCategorys:countCategorys,
+
     })
 
-    console.log(countArticles);
 })
 
 module.exports = router;

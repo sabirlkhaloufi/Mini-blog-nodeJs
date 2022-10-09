@@ -9,7 +9,7 @@ router.post("/updateAddCategory/:id", category.update);
 router.get("/deleteCategory/:id", category.delete);
 
 
-
+router.get("/getArticlesByCategory/:id", category.articleByCategory);
 
 // router.get("/category", (req, res) => {
 //   res.render("dashboard/category/category.ejs");

@@ -22,7 +22,8 @@ app.set('view engine', 'ejs');
 app.use('/',Router)
 app.use('/',Article)
 app.use('',Category)
-app.use('/api/avie',Avie)
+app.use('',Avie)
+
 
 app.listen(port, () => {
   console.log(`server has started ${port}`)

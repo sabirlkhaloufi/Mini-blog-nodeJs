@@ -53,7 +53,7 @@
                     <div class="row">
                         <ul class="list-unstyled d-flex gap-1 flex-wrap">
                             <% for(categorie of categories) { %>
-                            <li> <a class="btn" href=""><%= categorie.cat %></a> </li>
+                            <li> <a class="btn" href="/getArticlesByCategory/<%= categorie.id%>"><%= categorie.name %></a> </li>
                             <% } %>    
                         </ul>
                     </div>
