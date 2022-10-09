@@ -1,9 +1,6 @@
 const Model = require("../models/commentairModel.js")
 
 
-const Commentaire = require("../models/commentairModel");
-
-
 // ! affichage
 const afficher=(req,res)=>{
       Model.findAll()
@@ -59,7 +56,5 @@ const supprimer=(req,res)=>{
       .then(res.redirect('/afficher'))
       .catch()
 }
-
-
 
 module.exports= {afficher,ajouter,modifier,supprimer,edit}
