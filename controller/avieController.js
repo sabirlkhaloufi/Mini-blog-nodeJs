@@ -1,74 +1,36 @@
 
-const Avie = require("../models/avieModel");
+const Avie = require("../models/avieModel.js");
 
   // Create and Save a new Tutorial
 exports.create = (req, res) => {
-    // Validate request
-    if (!req.body.name) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-      
-    }
-    
     // Create a Tutorial
-    const Avie = {
-      title: req.body.name,
-      
+    const avie = {
+      avie: req.body.Avie,
     };
-  
     // Save Tutorial in the database
-    Avie.create(Avie)
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the article."
-        });
-      });
+    Avie.create(avie);
+    res.redirect("/Avis")
   };
   
 //   // Retrieve all Tutorials from the database.
-  exports.findAll = (req, res) => {
-    // const title = req.query.title;
-    // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  exports.getAllAvie = async(req, res) => {
   
-    Avie.findAll({})
-      .then(data => {
-        res.send(data);
+    const allData = await Avie.findAll({}).then(data => {
+      return data
+        // return JSON.parse(JSON.stringify(data))
       })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving articles."
-        });
-      });
+    
+      return allData
   };
   
  // Find a single Tutorial with an id
-  exports.findOne = (req, res) => {
+  exports.findOne = async(req, res) => {
     const id = req.params.id;
-  
-    Avie.findByPk(id)
-      .then(data => {
-        if (data) {
-          res.send(data);
-        } else {
-          res.status(404).send({
-            message: `Cannot find article with id=${id}.`
-          });
-        }
+    const allData = await Avie.findByPk(id).then(data => {
+      return data
       })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error retrieving article with id=" + id
-        });
-      });
-  };
-  
+      return allData
+    };  
 
   exports.update = (req, res) => {
     const id = req.params.id;
@@ -76,22 +38,8 @@ exports.create = (req, res) => {
     Avie.update(req.body, {
       where: { id: id }
     })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "article was updated successfully."
-          });
-        } else {
-          res.send({
-            message: `Cannot update article with id=${id}. Maybe article was not found or req.body is empty!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Error updating article with id=" + id
-        });
-      });
+  
+    res.redirect("/Avis")
   };
   
   exports.delete = (req, res) => {
@@ -100,21 +48,7 @@ exports.create = (req, res) => {
     Avie.destroy({
       where: { id: id }
     })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "article was deleted successfully!"
-          });
-        } else {
-          res.send({
-            message: `Cannot delete article with id=${id}. Maybe article was not found!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Could not delete article with id=" + id
-        });
-      });
-  };
-  
+          
+          res.redirect("/Avis")
+  }
+     
