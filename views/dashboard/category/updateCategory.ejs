@@ -38,34 +38,16 @@
                             <div class="col-12 col-xl-12">
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
-                                        <h4>modifier Articles</h4>
+                                        <h4>modifier Category</h4>
                                     </div>
                                     <div class="card-body">
-                                        <form action="/updateArticle/<%= article.id%>" method="POST">
+                                        <form action="/updateAddCategory/<%= data.id%>" method="POST">
                                             <div class="mb-3">
-                                              <label for="exampleInputEmail1" class="form-label">title</label>
-                                              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%= article.title%>" name="title">
+                                              <label for="exampleInputEmail1" class="form-label">Category Name</label>
+                                              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%= data.name%>" name="name">
                                             </div>
 
-                                            <div class="mb-3">
-                                              <label for="exampleInputPassword1" class="form-label">description</label>
-                                              <input type="text" class="form-control" id="exampleInputPassword1" value="<%= article.description%>" name="description">
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <label for="categories" class="form-label">categorie</label>
-                                                <select id="categories" class="form-control" name="CategoryId">
-                                                    <% category.forEach(function(data) { %>
-                                                    <option value="<%= data.id%>"><%= data.name%></option>
-                                                    <%})%>
-                                                </select>
-                                              </div>
-
-                                              <div class="mb-3">
-                                                <label for="exampleInputPassword1" class="form-label">centenu</label>
-                                                <textarea class="form-control" name="centenu" id="" cols="30" rows="10" value=""><%= article.centenu%></textarea>
-                                              </div>
-                                        
+                                                                                              
                                             <button type="submit" class="btn btn-primary">save</button>
                                           </form>
                                     </div>

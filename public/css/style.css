@@ -1,6 +1,22 @@
 .card-article{
     width: 48% !important; 
 }
+
+.bg-home-page{
+background-image: url("../images/home-bg.jpg");
+height: 80vh;
+}
+.bg-home-page::before{
+  content: "";
+  background-color: black;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.table-responsive .btn{
+  width: 70px;
+}
 /* ---------------- */
 /*        main      */
 /* ---------------- */

@@ -1,6 +1,6 @@
 <%- include('../../partials/headadmin.ejs') %>
-
 <body>
+    
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -29,7 +29,8 @@
             </header>
 
             <div class="page-heading">
-                <h3>les Articles</h3>
+                <h3>Categories</h3>
+                
             </div>
             <div class="page-content">
                 <section class="row">
@@ -39,40 +40,44 @@
                             <div class="col-12 col-xl-12">
                                 <div class="card">
                                     <div class="card-header d-flex justify-content-between">
-                                        <h4>les articles</h4>
-                                        <a href="/addArticle" class="btn btn-primary">Ajouter Articles</a>
+                                        
+                                        <h4>Categories</h4>
+                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter Categories </button>
+
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table table-hover table-lg">
                                                 <thead>
+                                                    
                                                     <tr>
                                                         <th>title</th>
-                                                        <th>description</th>
+                                                        <th>date created</th>
+                                                        <th>date update</th>
                                                         <th></th>
-                
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    
-
-                                                    <% for(article of articles) { %>
-                                                    <tr>
+                                                    <% categories.forEach(function(data) { %>
+                                                        <tr>
                                                         <td class="col-3">
-                                                            <%= article.title %>
+                                                            <%= data.name %>
+                                                        </td>
+                                                       
+
+                                                        <td class="col-auto">
+                                                            <%= data.createdAt %>                                                          
                                                         </td>
                                                         <td class="col-auto">
-                                                            <%= article.description %>
+                                                            <%= data.updatedAt %>
                                                         </td>
-                                                        
+                    
                                                         <td>
-                                                            <a class="btn btn-info btn-sm" href='/updateArticle/<%= article.id %>'>update</a>
-                                                            <a class="btn btn-danger btn-sm" href='/deleteArticle/<%= article.id %>'>delete</a>
-                                                            <a class="btn btn-info btn-sm" href='/deleteArticle/<%= article.id %>'>view</a>
+                                                            <a class="btn btn-info btn-sm" href='/updateCategory/<%= data.id %>'>update</a>
+                                                            <a class="btn btn-danger btn-sm" href='/deleteCategory/<%= data.id %>'>delete</a>
                                                         </td>
                                                     </tr>
-                                                    <% } %> 
-                                                   
+                                                   <% }); %>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -84,5 +89,31 @@
                 </section>
             </div>
 
+
 <%- include('../../partials/footerAdmin.ejs') %>
             
+
+            <!--Add  Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">    Ajouter Category </h5>
+                      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form action="/addcategory" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" class="form-control">
+                        </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save changes</button>
+                    </from>
+                    </div>
+                  </div>
+                </div>
+              </div>

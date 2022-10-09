@@ -1,5 +1,4 @@
 
-// const { response } = require("../app.js");
 const Commentaire = require("../models/commentairModel");
 
   // Create and Save a new Tutorial
