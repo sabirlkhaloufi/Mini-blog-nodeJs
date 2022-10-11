@@ -1,4 +1,3 @@
-
 const Article = require("../models/articleModel.js");
 const Op = require("sequelize").Op;
 
