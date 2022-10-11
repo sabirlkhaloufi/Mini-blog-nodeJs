@@ -3,8 +3,9 @@
 }
 
 .bg-home-page{
-background-image: url("../images/home-bg.jpg");
-height: 80vh;
+background-image: url("../images/bg-blog.jpg");
+height: 85vh;
+background-size: cover;
 }
 .bg-home-page::before{
   content: "";

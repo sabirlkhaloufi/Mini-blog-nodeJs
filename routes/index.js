@@ -1,10 +1,7 @@
 
 const articles = require("../controller/articleController.js");
 const category = require("../controller/categorieController");
-
-
 const express = require('express');
-const { response } = require("../app.js");
 const router = express.Router();
 
 // router.get('/', (req, res) => {
@@ -13,6 +10,18 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const data = await articles.getAllArticles(req, res)
+    const dataCat = await category.findAllCatToArt(req,res)
+
+     res.render('home.ejs',
+       {
+        articles: data,
+        categories:dataCat
+        
+      });
+  })
+
+  router.post('/search', async (req, res) => {
+    const data = await articles.search(req, res)
     const dataCat = await category.findAllCatToArt(req,res)
 
      res.render('home.ejs',
@@ -33,6 +42,7 @@ router.get('/', async (req, res) => {
       console.log(data)
   })
   
+
 router.get('/dashboard', async (req, res) => {
   const countArticles = await articles.countArticle(req, res);
   const countCategorys = await category.countCategory(req, res);

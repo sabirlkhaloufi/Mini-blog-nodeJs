@@ -1,5 +1,6 @@
 
 const Article = require("../models/articleModel.js");
+const Op = require("sequelize").Op;
 
   // Create and Save a new articles
 exports.create =  (req, res) => {  
@@ -46,4 +47,14 @@ exports.create =  (req, res) => {
     const data = await Article.findAndCountAll();
     return data;
   }
+
+
+
+  exports.search = async (req, res) => {
+    const data = await Article.findAll({ where: { title: {
+      [Op.like]: '%'+req.body.search+'%'
+    }}});
+    return data
+  };
+  
   

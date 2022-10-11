@@ -8,6 +8,8 @@ const Category = require("../models/categorieModel.js");
 
 router.post("/addArticle", articles.create);
 
+// router.post("/search", articles.search);
+
 router.get("/getAllArticles", articles.getAllArticles);
 
 router.get("/getArticle/:id", articles.findOne);
